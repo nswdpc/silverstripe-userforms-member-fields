@@ -1,0 +1,5 @@
+---
+Name: nswdpc-userforms-member-fields
+---
+NSWDPC\UserForms\MemberField\EditableMemberNameField:
+  use_title: false
