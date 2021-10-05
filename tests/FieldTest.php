@@ -25,7 +25,7 @@ class FieldTest extends SapphireTest {
         $member = Member::create([
             'Email' => 'formuser@example.com',
             'FirstName' => 'Form',
-            'Surnane' => 'O\'User'
+            'Surname' => 'O\'User'
         ]);
         return $member;
     }
