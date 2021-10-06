@@ -44,7 +44,7 @@ class EditableMemberEmailField extends EditableEmailField
 
         $member = Security::getCurrentUser();
         $defaultValue = '';
-        if($member && $member->exists()) {
+        if($member) {
             $defaultValue = $member->Email;
         }
         $field->setValue($defaultValue);

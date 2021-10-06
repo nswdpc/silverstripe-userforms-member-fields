@@ -49,7 +49,7 @@ class EditableMemberNameField extends EditableTextField
 
         $member = Security::getCurrentUser();
         $defaultValue = '';
-        if($member && $member->exists()) {
+        if($member) {
             if($this->config()->get('use_title')) {
                 $defaultValue = $member->getTitle();
             } else {
