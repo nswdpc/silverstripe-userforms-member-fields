@@ -35,7 +35,7 @@ class FieldTest extends SapphireTest {
         Security::setCurrentUser( $member );
         $field = EditableMemberEmailField::create();
         $formField = $field->getFormField();
-        $this->assertTrue($field instanceof EmailField);
-        $this->assertEquals( $member->Email, $field->Value());
+        $this->assertTrue($formField instanceof EmailField, "FormField is not an EmailField");
+        $this->assertEquals( $member->Email, $formField->Value(), "Value does not equal Member Email");
     }
 }
