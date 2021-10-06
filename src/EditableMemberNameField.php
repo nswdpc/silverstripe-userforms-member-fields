@@ -1,6 +1,6 @@
 <?php
 
-use NSWDPC\UserForms\MemberField;
+namespace NSWDPC\UserForms\MemberField;
 
 use SilverStripe\UserForms\Model\EditableFormField\EditableTextField;
 use SilverStripe\Security\Security;

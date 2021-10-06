@@ -1,6 +1,6 @@
 <?php
 
-use NSWDPC\UserForms\MemberField;
+namespace NSWDPC\UserForms\MemberField;
 
 use SilverStripe\UserForms\Model\EditableFormField\EditableEmailField;
 use SilverStripe\Security\Security;
@@ -47,7 +47,6 @@ class EditableMemberEmailField extends EditableEmailField
         if($member && $member->exists()) {
             $defaultValue = $member->Email;
         }
-
         $field->setValue($defaultValue);
         return $field;
     }
