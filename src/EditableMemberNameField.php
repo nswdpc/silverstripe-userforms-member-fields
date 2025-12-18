@@ -40,6 +40,7 @@ class EditableMemberNameField extends EditableTextField
         if ($member) {
             $defaultValue = $this->config()->get('use_title') ? $member->getTitle() : $member->getName();
         }
+
         return $field->setValue($defaultValue);
     }
 }
