@@ -6,6 +6,7 @@ use NSWDPC\UserForms\MemberField\EditableMemberEmailField;
 use NSWDPC\UserForms\MemberField\EditableMemberNameField;
 use NSWDPC\UserForms\MemberField\EditableMemberFirstNameField;
 use NSWDPC\UserForms\MemberField\EditableMemberSurnameField;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\TextField;
@@ -75,20 +76,20 @@ class FieldTest extends SapphireTest {
 
         $field = EditableMemberNameField::create();
 
-        $useTitle = $field->config()->get('use_title');
+        $useTitle = Config::inst()->get(EditableMemberNameField::class, 'use_title');
 
         // test name
-        $field->config()->update('use_title', false);
+        Config::modify()->set(EditableMemberNameField::class, 'use_title', false);
         $formField = $field->getFormField();
         $this->assertTrue($formField instanceof TextField, "FormField is not an TextField");
         $this->assertEquals( $member->getName(), $formField->Value(), "Value does not equal Member Name");
 
         // test title
-        $field->config()->update('use_title', true);
+        Config::modify()->set(EditableMemberNameField::class, 'use_title', true);
         $formField = $field->getFormField();
         $this->assertEquals( $member->getTitle(), $formField->Value(), "Value does not equal Member Title");
 
-        $field->config()->update('use_title', $useTitle);
+        Config::modify()->set(EditableMemberNameField::class, 'use_title', $useTitle);
     }
 
     /**
@@ -145,19 +146,19 @@ class FieldTest extends SapphireTest {
         $field = EditableMemberNameField::create();
         $field->Default = $defaultValue;
 
-        $useTitle = $field->config()->get('use_title');
+        $useTitle = Config::inst()->get(EditableMemberNameField::class, 'use_title');
 
         // test name
-        $field->config()->update('use_title', false);
+        Config::modify()->set(EditableMemberNameField::class, 'use_title', false);
         $formField = $field->getFormField();
         $this->assertTrue($formField instanceof TextField, "FormField is not an TextField");
         $this->assertEquals( $defaultValue, $formField->Value(), "Value does not equal default value");
 
         // test title
-        $field->config()->update('use_title', true);
+        Config::modify()->set(EditableMemberNameField::class, 'use_title', true);
         $formField = $field->getFormField();
         $this->assertEquals( $defaultValue, $formField->Value(), "Value does not equal default value");
 
-        $field->config()->update('use_title', $useTitle);
+        Config::modify()->set(EditableMemberNameField::class, 'use_title', $useTitle);
     }
 }

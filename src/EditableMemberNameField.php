@@ -36,9 +36,6 @@ class EditableMemberNameField extends EditableTextField
      */
     private static $table_name = 'EditableMemberNameField';
 
-    /**
-     * @return FormField
-     */
     public function getFormField()
     {
         $field = parent::getFormField();
