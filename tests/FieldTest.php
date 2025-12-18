@@ -23,18 +23,17 @@ class FieldTest extends SapphireTest {
     protected $usesDatabase = false;
 
     private function getTestMember() {
-        $member = Member::create([
+        return Member::create([
             'Email' => 'formuser@example.com',
             'FirstName' => 'Form',
-            'Surname' => 'O\'User'
+            'Surname' => "O'User"
         ]);
-        return $member;
     }
 
     /**
      * Verify Email field handles Member Email if it exists
      */
-    public function testEmailField() {
+    public function testEmailField(): void {
         $member = $this->getTestMember();
         Security::setCurrentUser( $member );
         $field = EditableMemberEmailField::create();
@@ -46,7 +45,7 @@ class FieldTest extends SapphireTest {
     /**
      * Verify FirstName field handles Member Email if it exists
      */
-    public function testFirstNameField() {
+    public function testFirstNameField(): void {
         $member = $this->getTestMember();
         Security::setCurrentUser( $member );
         $field = EditableMemberFirstNameField::create();
@@ -58,7 +57,7 @@ class FieldTest extends SapphireTest {
     /**
      * Verify Surname field handles Member Email if it exists
      */
-    public function testSurnameField() {
+    public function testSurnameField(): void {
         $member = $this->getTestMember();
         Security::setCurrentUser( $member );
         $field = EditableMemberSurnameField::create();
@@ -70,7 +69,7 @@ class FieldTest extends SapphireTest {
     /**
      * Verify Name field handles name/title of member
      */
-    public function testNameField() {
+    public function testNameField(): void {
         $member = $this->getTestMember();
         Security::setCurrentUser( $member );
 
@@ -95,12 +94,13 @@ class FieldTest extends SapphireTest {
     /**
      * Verify default value handling for email field
      */
-    public function testEmailFieldDefaultValue() {
+    public function testEmailFieldDefaultValue(): void {
         $defaultValue = 'testEmailField';
         $member = $this->getTestMember();
         Security::setCurrentUser( $member );
         $field = EditableMemberEmailField::create();
         $field->Default = $defaultValue;
+
         $formField = $field->getFormField();
         $this->assertTrue($formField instanceof EmailField, "FormField is not an EmailField");
         $this->assertEquals( $defaultValue, $formField->Value(), "Value does not equal default value");
@@ -109,12 +109,13 @@ class FieldTest extends SapphireTest {
     /**
      * Verify FirstName field handles default value
      */
-    public function testFirstNameFieldDefaultValue() {
+    public function testFirstNameFieldDefaultValue(): void {
         $defaultValue = 'testFirstNameField';
         $member = $this->getTestMember();
         Security::setCurrentUser( $member );
         $field = EditableMemberFirstNameField::create();
         $field->Default = $defaultValue;
+
         $formField = $field->getFormField();
         $this->assertTrue($formField instanceof TextField, "FormField is not an TextField");
         $this->assertEquals( $defaultValue, $formField->Value(), "Value does not equal default value");
@@ -123,12 +124,13 @@ class FieldTest extends SapphireTest {
     /**
      * Verify Surname field handles default value
      */
-    public function testSurnameFieldDefaultValue() {
+    public function testSurnameFieldDefaultValue(): void {
         $defaultValue = 'testSurnameField';
         $member = $this->getTestMember();
         Security::setCurrentUser( $member );
         $field = EditableMemberSurnameField::create();
         $field->Default = $defaultValue;
+
         $formField = $field->getFormField();
         $this->assertTrue($formField instanceof TextField, "FormField is not an TextField");
         $this->assertEquals( $defaultValue, $formField->Value(), "Value does not equal default value");
@@ -137,7 +139,7 @@ class FieldTest extends SapphireTest {
     /**
      * Verify Name field handles default value
      */
-    public function testNameFieldDefaultValue() {
+    public function testNameFieldDefaultValue(): void {
         $defaultValue = 'testNameField';
 
         $member = $this->getTestMember();

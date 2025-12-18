@@ -16,21 +16,13 @@ use SilverStripe\Security\Security;
 class EditableMemberEmailField extends EditableEmailField
 {
 
-    /**
-     * @var string
-     */
-    private static $singular_name = 'Member Email Field';
+    private static string $singular_name = 'Member Email Field';
 
-    /**
-     * @var string
-     */
-    private static $plural_name = 'Member Email Fields';
+    private static string $plural_name = 'Member Email Fields';
 
-    /**
-     * @var string
-     */
-    private static $table_name = 'EditableMemberEmailField';
+    private static string $table_name = 'EditableMemberEmailField';
 
+    #[\Override]
     public function getFormField()
     {
         $field = parent::getFormField();
@@ -44,6 +36,7 @@ class EditableMemberEmailField extends EditableEmailField
         if($member) {
             $defaultValue = $member->Email;
         }
+
         $field->setValue($defaultValue);
         return $field;
     }

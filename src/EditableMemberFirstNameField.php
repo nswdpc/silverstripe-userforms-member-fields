@@ -16,21 +16,13 @@ use SilverStripe\Security\Security;
 class EditableMemberFirstNameField extends EditableTextField
 {
 
-    /**
-     * @var string
-     */
-    private static $singular_name = 'Member Firstname Field';
+    private static string $singular_name = 'Member Firstname Field';
 
-    /**
-     * @var string
-     */
-    private static $plural_name = 'Member Firstname Fields';
+    private static string $plural_name = 'Member Firstname Fields';
 
-    /**
-     * @var string
-     */
-    private static $table_name = 'EditableMemberFirstNameField';
+    private static string $table_name = 'EditableMemberFirstNameField';
 
+    #[\Override]
     public function getFormField()
     {
         $field = parent::getFormField();
@@ -44,8 +36,6 @@ class EditableMemberFirstNameField extends EditableTextField
         if($member) {
             $defaultValue = $member->FirstName;
         }
-
-        $field = $field->setValue($defaultValue);
-        return $field;
+        return $field->setValue($defaultValue);
     }
 }

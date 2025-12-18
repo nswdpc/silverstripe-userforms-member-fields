@@ -19,23 +19,15 @@ class EditableMemberNameField extends EditableTextField
     /**
      * Option to use Member::getTitle()
      */
-    private static $use_title = false;
+    private static bool $use_title = false;
 
-    /**
-     * @var string
-     */
-    private static $singular_name = 'Member Name Field';
+    private static string $singular_name = 'Member Name Field';
 
-    /**
-     * @var string
-     */
-    private static $plural_name = 'Member Name Fields';
+    private static string $plural_name = 'Member Name Fields';
 
-    /**
-     * @var string
-     */
-    private static $table_name = 'EditableMemberNameField';
+    private static string $table_name = 'EditableMemberNameField';
 
+    #[\Override]
     public function getFormField()
     {
         $field = parent::getFormField();
@@ -46,15 +38,9 @@ class EditableMemberNameField extends EditableTextField
 
         $member = Security::getCurrentUser();
         $defaultValue = '';
-        if($member) {
-            if($this->config()->get('use_title')) {
-                $defaultValue = $member->getTitle();
-            } else {
-                $defaultValue = $member->getName();
-            }
+        if ($member) {
+            $defaultValue = $this->config()->get('use_title') ? $member->getTitle() : $member->getName();
         }
-
-        $field = $field->setValue($defaultValue);
-        return $field;
+        return $field->setValue($defaultValue);
     }
 }
