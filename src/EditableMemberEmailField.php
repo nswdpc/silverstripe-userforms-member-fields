@@ -15,7 +15,6 @@ use SilverStripe\Security\Security;
  */
 class EditableMemberEmailField extends EditableEmailField
 {
-
     private static string $singular_name = 'Member Email Field';
 
     private static string $plural_name = 'Member Email Fields';
@@ -27,13 +26,13 @@ class EditableMemberEmailField extends EditableEmailField
     {
         $field = parent::getFormField();
 
-        if($this->Default) {
+        if ($this->Default) {
             return $field;
         }
 
         $member = Security::getCurrentUser();
         $defaultValue = '';
-        if($member) {
+        if ($member) {
             $defaultValue = $member->Email;
         }
 

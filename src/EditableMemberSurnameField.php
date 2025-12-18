@@ -15,7 +15,6 @@ use SilverStripe\Security\Security;
  */
 class EditableMemberSurnameField extends EditableTextField
 {
-
     private static string $singular_name = 'Member Surname Field';
 
     private static string $plural_name = 'Member Surname fields';
@@ -27,13 +26,13 @@ class EditableMemberSurnameField extends EditableTextField
     {
         $field = parent::getFormField();
 
-        if($this->Default) {
+        if ($this->Default) {
             return $field;
         }
 
         $member = Security::getCurrentUser();
         $defaultValue = '';
-        if($member) {
+        if ($member) {
             $defaultValue = $member->Surname;
         }
         return $field->setValue($defaultValue);

@@ -15,7 +15,6 @@ use SilverStripe\Security\Security;
  */
 class EditableMemberNameField extends EditableTextField
 {
-
     /**
      * Option to use Member::getTitle()
      */
@@ -32,7 +31,7 @@ class EditableMemberNameField extends EditableTextField
     {
         $field = parent::getFormField();
 
-        if($this->Default) {
+        if ($this->Default) {
             return $field;
         }
 
