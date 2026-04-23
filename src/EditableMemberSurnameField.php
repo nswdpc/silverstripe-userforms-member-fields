@@ -15,40 +15,27 @@ use SilverStripe\Security\Security;
  */
 class EditableMemberSurnameField extends EditableTextField
 {
+    private static string $singular_name = 'Member Surname Field';
 
-    /**
-     * @var string
-     */
-    private static $singular_name = 'Member Surname Field';
+    private static string $plural_name = 'Member Surname fields';
 
-    /**
-     * @var string
-     */
-    private static $plural_name = 'Member Surname fields';
+    private static string $table_name = 'EditableMemberSurnameField';
 
-    /**
-     * @var string
-     */
-    private static $table_name = 'EditableMemberSurnameField';
-
-    /**
-     * @return FormField
-     */
+    #[\Override]
     public function getFormField()
     {
         $field = parent::getFormField();
 
-        if($this->Default) {
+        if ($this->Default) {
             return $field;
         }
 
         $member = Security::getCurrentUser();
         $defaultValue = '';
-        if($member) {
+        if ($member) {
             $defaultValue = $member->Surname;
         }
 
-        $field = $field->setValue($defaultValue);
-        return $field;
+        return $field->setValue($defaultValue);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace NSWDPC\UserForms\MemberField;
 
 use SilverStripe\UserForms\Model\EditableFormField\EditableEmailField;
@@ -15,38 +17,27 @@ use SilverStripe\Security\Security;
  */
 class EditableMemberEmailField extends EditableEmailField
 {
+    private static string $singular_name = 'Member Email Field';
 
-    /**
-     * @var string
-     */
-    private static $singular_name = 'Member Email Field';
+    private static string $plural_name = 'Member Email Fields';
 
-    /**
-     * @var string
-     */
-    private static $plural_name = 'Member Email Fields';
+    private static string $table_name = 'EditableMemberEmailField';
 
-    /**
-     * @var string
-     */
-    private static $table_name = 'EditableMemberEmailField';
-
-    /**
-     * @return FormField
-     */
+    #[\Override]
     public function getFormField()
     {
         $field = parent::getFormField();
 
-        if($this->Default) {
+        if ($this->Default) {
             return $field;
         }
 
         $member = Security::getCurrentUser();
         $defaultValue = '';
-        if($member) {
+        if ($member) {
             $defaultValue = $member->Email;
         }
+
         $field->setValue($defaultValue);
         return $field;
     }
