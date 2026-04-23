@@ -35,6 +35,7 @@ class EditableMemberSurnameField extends EditableTextField
         if ($member) {
             $defaultValue = $member->Surname;
         }
+
         return $field->setValue($defaultValue);
     }
 }

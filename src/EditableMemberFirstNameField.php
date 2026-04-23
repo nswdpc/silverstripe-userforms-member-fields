@@ -35,6 +35,7 @@ class EditableMemberFirstNameField extends EditableTextField
         if ($member) {
             $defaultValue = $member->FirstName;
         }
+
         return $field->setValue($defaultValue);
     }
 }
