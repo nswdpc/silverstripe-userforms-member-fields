@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace NSWDPC\UserForms\MemberField;
 
 use SilverStripe\UserForms\Model\EditableFormField\EditableEmailField;

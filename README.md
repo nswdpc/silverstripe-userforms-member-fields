@@ -28,7 +28,7 @@ For the member name field, set the `use_title` config value to `true` to use the
 
 ## Maintainers
 
-+ [dpcdigital@NSWDPC:~$](https://dpc.nsw.gov.au)
++ PD Web Team
 
 ## Security
 
