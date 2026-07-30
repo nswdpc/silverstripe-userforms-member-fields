@@ -40,7 +40,7 @@ class FieldTest extends SapphireTest
         $field = EditableMemberEmailField::create();
         $formField = $field->getFormField();
         $this->assertTrue($formField instanceof EmailField, "FormField is not an EmailField");
-        $this->assertEquals($member->Email, $formField->Value(), "Value does not equal Member Email");
+        $this->assertEquals($member->Email, $formField->getValue(), "Value does not equal Member Email");
     }
 
     /**
@@ -53,7 +53,7 @@ class FieldTest extends SapphireTest
         $field = EditableMemberFirstNameField::create();
         $formField = $field->getFormField();
         $this->assertTrue($formField instanceof TextField, "FormField is not an TextField");
-        $this->assertEquals($member->FirstName, $formField->Value(), "Value does not equal Member FirstName");
+        $this->assertEquals($member->FirstName, $formField->getValue(), "Value does not equal Member FirstName");
     }
 
     /**
@@ -66,7 +66,7 @@ class FieldTest extends SapphireTest
         $field = EditableMemberSurnameField::create();
         $formField = $field->getFormField();
         $this->assertTrue($formField instanceof TextField, "FormField is not an TextField");
-        $this->assertEquals($member->Surname, $formField->Value(), "Value does not equal Member Surname");
+        $this->assertEquals($member->Surname, $formField->getValue(), "Value does not equal Member Surname");
     }
 
     /**
@@ -85,12 +85,12 @@ class FieldTest extends SapphireTest
         Config::modify()->set(EditableMemberNameField::class, 'use_title', false);
         $formField = $field->getFormField();
         $this->assertTrue($formField instanceof TextField, "FormField is not an TextField");
-        $this->assertEquals($member->getName(), $formField->Value(), "Value does not equal Member Name");
+        $this->assertEquals($member->getName(), $formField->getValue(), "Value does not equal Member Name");
 
         // test title
         Config::modify()->set(EditableMemberNameField::class, 'use_title', true);
         $formField = $field->getFormField();
-        $this->assertEquals($member->getTitle(), $formField->Value(), "Value does not equal Member Title");
+        $this->assertEquals($member->getTitle(), $formField->getValue(), "Value does not equal Member Title");
 
         Config::modify()->set(EditableMemberNameField::class, 'use_title', $useTitle);
     }
@@ -108,7 +108,7 @@ class FieldTest extends SapphireTest
 
         $formField = $field->getFormField();
         $this->assertTrue($formField instanceof EmailField, "FormField is not an EmailField");
-        $this->assertEquals($defaultValue, $formField->Value(), "Value does not equal default value");
+        $this->assertEquals($defaultValue, $formField->getValue(), "Value does not equal default value");
     }
 
     /**
@@ -124,7 +124,7 @@ class FieldTest extends SapphireTest
 
         $formField = $field->getFormField();
         $this->assertTrue($formField instanceof TextField, "FormField is not an TextField");
-        $this->assertEquals($defaultValue, $formField->Value(), "Value does not equal default value");
+        $this->assertEquals($defaultValue, $formField->getValue(), "Value does not equal default value");
     }
 
     /**
@@ -140,7 +140,7 @@ class FieldTest extends SapphireTest
 
         $formField = $field->getFormField();
         $this->assertTrue($formField instanceof TextField, "FormField is not an TextField");
-        $this->assertEquals($defaultValue, $formField->Value(), "Value does not equal default value");
+        $this->assertEquals($defaultValue, $formField->getValue(), "Value does not equal default value");
     }
 
     /**
@@ -162,12 +162,12 @@ class FieldTest extends SapphireTest
         Config::modify()->set(EditableMemberNameField::class, 'use_title', false);
         $formField = $field->getFormField();
         $this->assertTrue($formField instanceof TextField, "FormField is not an TextField");
-        $this->assertEquals($defaultValue, $formField->Value(), "Value does not equal default value");
+        $this->assertEquals($defaultValue, $formField->getValue(), "Value does not equal default value");
 
         // test title
         Config::modify()->set(EditableMemberNameField::class, 'use_title', true);
         $formField = $field->getFormField();
-        $this->assertEquals($defaultValue, $formField->Value(), "Value does not equal default value");
+        $this->assertEquals($defaultValue, $formField->getValue(), "Value does not equal default value");
 
         Config::modify()->set(EditableMemberNameField::class, 'use_title', $useTitle);
     }
